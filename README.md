@@ -1,34 +1,59 @@
-# RentEase README
+# Rentify
 
 ## Overview
 
-Welcome to RentEase Front-end! This README file provides an overview of the project and instructions for contribution.
+Welcome to Rentify Front-end! This README file provides an overview of the project and instructions for contribution.
 
-#### **Status:**  ![#1589F0](https://via.placeholder.com/15/1589F0/1589F0.png) Dev
 
-## Local Setup
+## Table of Contents
 
-Follow these steps to get the project up and running on your local machine.
+- [About the Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+
+## About The Project
+
+Here, you can provide a detailed description of your project. Explain what the project does, what its main features are, and any other information that might be relevant.
+
+### Built With
+
+List the major frameworks, libraries, or other tools that you've used in your project. For example:
+
+- [React](https://reactjs.org/)
+- [Node.js](https://nodejs.org/)
+- [Express.js](https://expressjs.com/)
+
+## Getting Started
 
 ### Prerequisites
 
-- [npm](https://nodejs.org/en/download)
+This section should list any major requirements or prerequisites to run your project. For example:
 
-Note: npm automatically installs while installing Node
+- Node.js and npm: You can download these from [here](https://nodejs.org/en/download/).
 
 ### Installation
 
 1. Clone the repository to your local machine:
 
-   ```bash
-   git clone https://github.com/YuvarajSingh-0/RentEase.git
+   ```sh
+   git clone <repository-url>
    ```
-2. Navigate to the project directory by `cd RentEase`
+2. Navigate to the project directory:
 
-3. Install Dependencies
-`npm install`
+   ```sh
+   cd Rentify-frontend
+   ```
+3. Install the project dependencies:
 
-4. Start the development server
-`npm start`
+   ```sh
+   npm install
+   ```
+4. Start the development server:
 
-Your local site opens in port 3000 by default.
+   ```sh
+   npm start
+   ```
+Your local site should open in port 3000 by default.
