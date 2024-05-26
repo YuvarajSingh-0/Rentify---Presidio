@@ -1,7 +1,7 @@
 const checkUserLoggedIn = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            const res = await fetch('http://localhost:9000/user/checkUserLoggedIn', { credentials: 'include' });
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/checkUserLoggedIn`, { credentials: 'include' });
             const data = await res.json();
 
             if (res.status === 200) {

@@ -17,7 +17,7 @@ const LandingPage = () => {
     useEffect(() => {
 
         const fetchProperties = async () => {
-            const response = await fetch(`http://localhost:9000/property/all?page=${currentPage}&limit=${itemsPerPage}&sort=${sortBy}&order=${order}&search=${searchValue.current.value}`)
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/all?page=${currentPage}&limit=${itemsPerPage}&sort=${sortBy}&order=${order}&search=${searchValue.current.value}`)
             const data = await response.json()
             console.log(data)
             if (response.error) {
@@ -37,7 +37,7 @@ const LandingPage = () => {
         if (search === "") {
             setSortedData(properties)
         } else {
-            let response = await fetch(`http://localhost:9000/property/all?search=${search}&sort=${sortBy}&order=${order}&limit=${itemsPerPage}`)
+            let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/all?search=${search}&sort=${sortBy}&order=${order}&limit=${itemsPerPage}`)
             let data = await response.json()
             setProperties(data)
             setSortedData(data)

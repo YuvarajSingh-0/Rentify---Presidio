@@ -17,7 +17,7 @@ function Register() {
         }
         const data = new FormData(e.target);
         const value = Object.fromEntries(data.entries());
-        const response = await fetch('http://localhost:9000/auth/register', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ function Register() {
             <input name='password' type="password" placeholder="Confirm Password" className="rounded-md border p-2 mt-4 w-full" required onChange={e => setConfirmPassword(e.target.value)} />
             {password !== '' && (passwordsMatch ? <small className='text-green-700'>Passwords matched</small> : <small className='text-red-600'>Passwords do not match</small>)}
             <select name="role" defaultValue={"SELLER"} id="role" className="rounded-md border p-2 mt-4 w-full">
-                <option  value="SELLER">Providing Properties</option>
+                <option value="SELLER">Providing Properties</option>
                 <option value="BUYER">Searching for Properties</option>
             </select>
             <button type='submit' class="bg-blue-500 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600">Register</button>

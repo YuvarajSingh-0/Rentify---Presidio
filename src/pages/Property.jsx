@@ -54,7 +54,7 @@ export default function Property() {
         const fetchPropertyDetails = async () => {
             return new Promise(async (resolve, reject) => {
                 try {
-                    const response = await fetch(`http://localhost:9000/property/${id}`)
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/${id}`)
                     const data = await response.json()
                     if (data.error || response.status === 500 || data.Error || response.status === 404) {
                         alert("Something went wrong please try again later")
@@ -156,7 +156,7 @@ export default function Property() {
         setIsLoadingInterest(true)
         checkUserLoggedIn().then(async (userData) => {
             setUserState(userData);
-            const response = await fetch(`http://localhost:9000/property/${id}/interest`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/${id}/interest`, {
                 method: 'POST',
                 credentials: 'include'
             })

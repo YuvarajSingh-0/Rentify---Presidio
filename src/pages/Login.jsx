@@ -25,7 +25,7 @@ const Login = () => {
 
     const logInWithEmailAndPassword = async (email, password) => {
         setLoading(true);
-        fetch('http://localhost:9000/auth/login', {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

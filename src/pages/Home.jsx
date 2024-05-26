@@ -22,7 +22,7 @@ const Home = ({ userState }) => {
             // console.log(role)
             if (userState.role === 'BUYER') {
 
-                const response = await fetch(`http://localhost:9000/property/all?page=${currentPage}&limit=${itemsPerPage}&sort=${sortBy}&order=${order}&search=${searchValue.current.value}`)
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/all?page=${currentPage}&limit=${itemsPerPage}&sort=${sortBy}&order=${order}&search=${searchValue.current.value}`)
                 const data = await response.json()
                 console.log(data)
                 if (data.error) {
@@ -32,7 +32,7 @@ const Home = ({ userState }) => {
                 setSortedData(data)
                 setIsLastPage(data.length < itemsPerPage);
             } else if (userState.role === 'SELLER') {
-                const response = await fetch(`http://localhost:9000/property/self?page=${currentPage}&limit=${itemsPerPage}&sort=${sortBy}&order=${order}&search=${searchValue.current.value}`, { credentials: 'include' })
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/self?page=${currentPage}&limit=${itemsPerPage}&sort=${sortBy}&order=${order}&search=${searchValue.current.value}`, { credentials: 'include' })
                 const data = await response.json()
                 // console.log(data)
                 if (data.error) {
@@ -53,7 +53,7 @@ const Home = ({ userState }) => {
         if (search === "") {
             setSortedData(properties)
         } else {
-            let response = await fetch(`http://localhost:9000/property/all?search=${search}&sort=${sortBy}&order=${order}&limit=${itemsPerPage}`)
+            let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/all?search=${search}&sort=${sortBy}&order=${order}&limit=${itemsPerPage}`)
             let data = await response.json()
             setProperties(data)
             setSortedData(data)

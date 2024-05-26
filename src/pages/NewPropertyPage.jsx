@@ -29,7 +29,7 @@ function NewPropertyPage() {
             else {
                 value.images = []
             }
-            const response = await fetch('http://localhost:9000/property/new', {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/new`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

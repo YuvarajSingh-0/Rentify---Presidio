@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = ({ userState }) => {
     const handleLogout = () => {
-        fetch('http://localhost:9000/auth/logout', {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/logout`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

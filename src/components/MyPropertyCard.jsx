@@ -18,7 +18,7 @@ function MyPropertyCard({ info }) {
 
 
     const handleDeleteProperty = async () => {
-        const response = await fetch('http://localhost:9000/property/delete', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/delete`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ function MyPropertyCard({ info }) {
                 nearbySchools: schoolsRef.current.innerText || info.nearbySchools,
             }
             console.log(updatedInfo)
-            const response = await fetch('http://localhost:9000/property/update', {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/update`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -125,15 +125,15 @@ function MyPropertyCard({ info }) {
                 </div>
                 <div className='flex items-center'>
                     <span>Hospitals: </span>
-                    <p ref={hospitalsRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbyHospitals.length== 0 ? 'empty' : info.nearbyHospitals}</p>
+                    <p ref={hospitalsRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbyHospitals.length == 0 ? 'empty' : info.nearbyHospitals}</p>
                 </div>
                 <div className='flex items-center'>
                     <span>Metros: </span>
-                    <p ref={metrosRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbyMetros.length == 0 ? 'empty':info.nearbyMetros}</p>
+                    <p ref={metrosRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbyMetros.length == 0 ? 'empty' : info.nearbyMetros}</p>
                 </div>
                 <div className='flex items-center'>
                     <span>Schools: </span>
-                    <p ref={schoolsRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbySchools.length==0 ? 'empty':info.nearbySchools}</p>
+                    <p ref={schoolsRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbySchools.length == 0 ? 'empty' : info.nearbySchools}</p>
                 </div>
                 {isEdit && <div>
                     <input type="file" ref={imageRef} onChange={handleUpload} />
@@ -145,7 +145,7 @@ function MyPropertyCard({ info }) {
                     <button className='shadow-sm bg-red-600 text-white px-3 py-2 rounded-md' onClick={handleDeleteProperty}>Delete</button>
                     <button className='shadow-sm float-right text-white bg-purple-600 px-3 py-2 rounded-md' onClick={handleEditSave}>{isEdit ? 'Save' : 'Edit'}</button>
                 </div>
-                
+
             </div>
             {/* <pre>
                 {JSON.stringify(info, null, 2)}

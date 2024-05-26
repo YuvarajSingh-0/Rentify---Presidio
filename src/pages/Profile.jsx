@@ -17,7 +17,7 @@ const Profile = ({ userState }) => {
             setDisableInput(false)
         } else {
             setDisableInput(true)
-            fetch('http://localhost:9000/user', {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/user`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,11 +31,11 @@ const Profile = ({ userState }) => {
                     if (data.error) {
                         alert("Something went wrong please try again later")
                     }
-                    else{
+                    else {
                         alert("Profile Updated Successfully")
                     }
                 })
-            
+
         }
     }
 
@@ -43,13 +43,13 @@ const Profile = ({ userState }) => {
     useEffect(() => {
         const fetchProperties = async () => {
             {
-                const response = await fetch('http://localhost:9000/user', { credentials: 'include' })
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user`, { credentials: 'include' })
                 const data = await response.json()
                 console.log(data)
                 setDetails(data)
             }
 
-            const response = await fetch('http://localhost:9000/property/self', { credentials: 'include' })
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/self`, { credentials: 'include' })
             const data = await response.json()
             console.log(data)
             if (response.error) {
