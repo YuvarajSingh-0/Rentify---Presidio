@@ -74,7 +74,7 @@ const LandingPage = () => {
             </div>
             <button onClick={() => navigate('/login')} className="bg-blue-600 text-white px-3 py-2 rounded-md bottom-10 right-10 shadow-md fixed">Login</button>
             <div className="mt-10 w-max m-auto flex gap-4">
-                <button className={` rounded-md px-4 py-2 ${currentPage == 1 ? 'bg-slate-200 text-slate-500' : 'bg-slate-300 text-black'}`} onClick={() => setCurrentPage(prev => prev - 1)} disabled={currentPage === 1}>Previous</button>
+                <button className={` rounded-md px-4 py-2 ${currentPage === 1 ? 'bg-slate-200 text-slate-500' : 'bg-slate-300 text-black'}`} onClick={() => setCurrentPage(prev => prev - 1)} disabled={currentPage === 1}>Previous</button>
                 <button className={` rounded-md px-4 py-2 ${isLastPage ? 'bg-slate-200 text-slate-500' : 'bg-slate-300 text-black'}`} onClick={() => setCurrentPage(prev => prev + 1)} disabled={isLastPage}>Next</button>
             </div>
         </div>

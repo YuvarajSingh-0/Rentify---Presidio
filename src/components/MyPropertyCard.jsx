@@ -125,15 +125,15 @@ function MyPropertyCard({ info }) {
                 </div>
                 <div className='flex items-center'>
                     <span>Hospitals: </span>
-                    <p ref={hospitalsRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbyHospitals.length == 0 ? 'empty' : info.nearbyHospitals}</p>
+                    <p ref={hospitalsRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbyHospitals.length === 0 ? 'empty' : info.nearbyHospitals}</p>
                 </div>
                 <div className='flex items-center'>
                     <span>Metros: </span>
-                    <p ref={metrosRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbyMetros.length == 0 ? 'empty' : info.nearbyMetros}</p>
+                    <p ref={metrosRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbyMetros.length === 0 ? 'empty' : info.nearbyMetros}</p>
                 </div>
                 <div className='flex items-center'>
                     <span>Schools: </span>
-                    <p ref={schoolsRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbySchools.length == 0 ? 'empty' : info.nearbySchools}</p>
+                    <p ref={schoolsRef} contentEditable={isEdit} className={`my-2 px-2 rounded-md outline-none text-lg ${isEdit ? 'border border-slate-500' : 'overflow-ellipsis whitespace-nowrap overflow-hidden'} `}>{info.nearbySchools.length === 0 ? 'empty' : info.nearbySchools}</p>
                 </div>
                 {isEdit && <div>
                     <input type="file" ref={imageRef} onChange={handleUpload} />
