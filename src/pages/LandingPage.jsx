@@ -17,7 +17,7 @@ const LandingPage = () => {
     useEffect(() => {
 
         const fetchProperties = async () => {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/all?page=${currentPage}&limit=${itemsPerPage}&sort=${sortBy}&order=${order}&search=${searchValue.current.value}`, { mode: 'cors' })
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/property/all?page=${currentPage}&limit=${itemsPerPage}&sort=${sortBy}&order=${order}&search=${searchValue.current.value}`)
             const data = await response.json()
             console.log(data)
             if (response.error) {
