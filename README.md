@@ -39,7 +39,7 @@ This section should list any major requirements or prerequisites to run your pro
 1. Clone the repository to your local machine:
 
    ```sh
-   git clone <repository-url>
+   git clone https://github.com/YuvarajSingh-0/Rentify-frontend
    ```
 2. Navigate to the project directory:
 
