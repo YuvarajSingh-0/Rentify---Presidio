@@ -102,28 +102,6 @@ body {
   position: relative;
 }
 
-.searchbar>input {
-  padding: 10px 90px 10px 20px;
-  border-radius: 20px;
-  border: none;
-  width: 100%;
-}
-
-.searchbar>input:focus {
-  outline: none;
-}
-
-.searchbar>button {
-  position: absolute;
-  right: 0;
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  background-color: #fb550e;
-  color: #fff6f0;
-  cursor: pointer;
-}
-
 .grid {
   display: grid;
   min-height: max-content;

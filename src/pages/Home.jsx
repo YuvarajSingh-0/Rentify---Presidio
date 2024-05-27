@@ -16,8 +16,8 @@ const Home = ({ userState }) => {
     const [isLastPage, setIsLastPage] = useState(false);
 
     const [isOpen, setIsOpen] = useState(false);
-    const [minPrice, setMinPrice] = useState(500000);
-    const [maxPrice, setMaxPrice] = useState(100000000);
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(1000000000);
     const [schoolDistance, setSchoolDistance] = useState(0);
     const [metroDistance, setMetroDistance] = useState(0);
     const [hospitalDistance, setHospitalDistance] = useState(0);

@@ -54,32 +54,31 @@ function NewPropertyPage() {
     }
 
     return (
-        <div className='flex'>
-
-            <div className='add-house-card flex flex-col items-center justify-evenly p-8 relative rounded-r-lg bg-white shadow-md transition-all duration-200 ease-in overflow-hidden flex-1'>
+            <div className='w-full  md:w-2/3  m-auto add-house-card flex flex-col items-center justify-evenly p-8 relative rounded-lg bg-white shadow-md transition-all duration-200 ease-in overflow-hidden flex-1'>
+                <h3 className='font-semibold text-3xl uppercase mb-6 text-left'>Add Property</h3>
                 <form className="addhouseform" method="POST" onSubmit={handleSubmit}>
                     <input required placeholder="Property Name" id="property_name" type="text" name="property_name" />
-                    <input required placeholder="xyz Blakers Street, London" id="location" type="text" name="location" />
-                    <input required placeholder="London" id="city" type="text" name="city" />
+                    <input required placeholder="Address" id="location" type="text" name="location" />
+                    <input required placeholder="city" id="city" type="text" name="city" />
                     <input required placeholder="Bedrooms" id="bedrooms" type="number" name="bedrooms" />
                     <input required placeholder="Bathrooms" id="bathrooms" type="number" name="bathrooms" />
-                    <input required placeholder="Swimming Pool, Backyard" id="amenities" type="text" name="amenities" />
-                    <input required placeholder="900 sqft" id="property_type" type="text" name="area" />
-                    <input required className="mb-0 pb-0" placeholder="$$$" id="rent" type="number" name="price" />
+                    <input required placeholder="Ex: Swimming Pool, Backyard" id="amenities" type="text" name="amenities" />
+                    <input required placeholder="900 sqft (provide in sqft)" id="property_type" type="text" name="area" />
+                    <input required className="mb-0 pb-0" placeholder="Price" id="price" type="number" name="price" />
                     <hr />
-                    <input placeholder="Nearby Metros" id="nearbyMetros" type="text" name="nearbyMetros" />
+                    <input className='mt-5' placeholder="Nearby Metros (seperate by commas)" id="nearbyMetros" type="text" name="nearbyMetros" />
                     <div className='flex flex-col mb-5'>
                         <label htmlFor="metroDistance">Distance to nearest Metro: {metroDistance}</label>
                         <input id='metroDistance' onChange={(e) => setMetroDistance(Number(e.target.value))} className='w-96' type="range" min={0} max={100} value={metroDistance} name='metroDistance' />
                     </div>
                     <hr />
-                    <input placeholder="Nearby Schools" id="nearbySchools" type="text" name="nearbySchools" />
+                    <input className='mt-5' placeholder="Nearby Schools (seperate by commas)" id="nearbySchools" type="text" name="nearbySchools" />
                     <div className='flex flex-col mb-5'>
                         <label htmlFor="schoolDistance">Distance to nearest School: {schoolDistance}</label>
                         <input id='schoolDistance' onChange={(e) => setSchoolDistance(Number(e.target.value))} className='w-96' type="range" min={0} max={100} value={schoolDistance} name='schoolDistance' />
                     </div>
                     <hr />
-                    <input placeholder="Nearby Hospitals" id="nearbyHospitals" type="text" name="nearbyHospitals" />
+                    <input className='mt-5' placeholder="Nearby Hospitals (seperate by commas)" id="nearbyHospitals" type="text" name="nearbyHospitals" />
                     <div className='flex flex-col mb-5'>
                         <label htmlFor="hospitalDistance">Distance to nearest Hospital: {hospitalDistance}</label>
                         <input id='hospitalDistance' onChange={(e) => setHospitalDistance(Number(e.target.value))} className='w-96' type="range" min={0} max={100} value={hospitalDistance} name='hospitalDistance' />
@@ -93,7 +92,6 @@ function NewPropertyPage() {
                     </div>
                     <button className="px-3 py-2 text-white bg-blue-500 rounded-full w-1/2 m-auto" type="submit">Add</button>
                 </form>
-            </div>
         </div>
     );
 }

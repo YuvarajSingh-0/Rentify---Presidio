@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import PropertyCard from "../components/PropertyCard";
 import { useNavigate } from "react-router-dom";
+import checkUserLoggedIn from "../utils/checkUserLoggedIn";
 
 // TODO: Pagination
 
@@ -16,23 +17,19 @@ const LandingPage = () => {
     const [isLastPage, setIsLastPage] = useState(false);
 
     const [isOpen, setIsOpen] = useState(false);
-    const [minPrice, setMinPrice] = useState(500000);
-    const [maxPrice, setMaxPrice] = useState(100000000);
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(1000000000);
     const [schoolDistance, setSchoolDistance] = useState(0);
     const [metroDistance, setMetroDistance] = useState(0);
     const [hospitalDistance, setHospitalDistance] = useState(0);
     const [searchWord, setSearchWord] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-
+    const [userState, setUserState] = useState({});
     useEffect(() => {
         const fetchProperties = async () => {
             setIsLoading(true);
             let url = `${process.env.REACT_APP_BACKEND_URL}`
             const response = await fetch(`${url}/property/all?page=${currentPage}&limit=${itemsPerPage}&sort=${sortBy}&order=${order}&search=${searchValue.current.value}&minPrice=${minPrice}&maxPrice=${maxPrice}&schoolDistance=${schoolDistance}&metroDistance=${metroDistance}&hospitalDistance=${hospitalDistance}`)
-            if (response.status === 401 || response.status === 403 || response.status === 404) {
-                alert('Please login to continue')
-                return navigate('/login')
-            }
             if (response.status === 500) {
                 alert('Something went wrong. Please try again later')
                 return navigate('/')
@@ -54,6 +51,10 @@ const LandingPage = () => {
         fetchPropertiesDebounce();
     }, [currentPage, itemsPerPage, sortBy, order, searchWord, minPrice, maxPrice, schoolDistance, metroDistance, hospitalDistance]);
 
+    useEffect(() => {
+        checkUserLoggedIn().then((d) => setUserState(d)).catch((e)=>console.log(e));
+    }, [])
+
     async function handleSearch(e) {
         e.preventDefault();
         const search = searchValue.current.value;
@@ -71,17 +72,13 @@ const LandingPage = () => {
     }, [minPrice, maxPrice])
 
     return (
-        //     display: flex;
-        // align - items: center;
-        // justify - content: space - between;
-        // margin - bottom: 30px;
         <div className="mt-10">
             <div className="flex items-center justify-between mb-8">
                 {isLoading ? <h1>Loading...</h1> : <h1 className="text-3xl">Browse Properties</h1>}
                 <div className="flex flex-col md:flex-row gap-5">
                     <div className="relative inline-block text-left">
                         <div>
-                            <button type="button" onClick={() => setIsOpen(!isOpen)} className="text-center px-[20px] py-[10px] inline-flex justify-center w-full rounded-[20px] border border-gray-300 shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-orange-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
+                            <button type="button" onClick={() => setIsOpen(!isOpen)} className="text-center px-5 py-2 inline-flex justify-center w-full rounded-2xl border border-gray-300 shadow-sm bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-gray-100 focus:ring-orange-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
                                 <p className="text-center m-auto">Filter Properties  {isOpen ? <>&uarr;</> : <>&darr;</>}</p>
                             </button>
                         </div>
@@ -114,7 +111,7 @@ const LandingPage = () => {
                         const [sort, order] = e.target.value.split('-');
                         setSortBy(sort);
                         setOrder(order);
-                    }} className="px-[20px] py-[10px] rounded-[20px]">
+                    }} className="px-5 py-2 rounded-2xl focus:outline-none focus:ring-2 focus:ring-offset-gray-100 focus:ring-orange-500 shadow-sm">
                         <option className="px-3 py-1" value="">Sort by</option>
                         <option className="px-3 py-1" value="price-asc">Price Increasing</option>
                         <option className="px-3 py-1" value="price-desc">Price Decreasing</option>
@@ -122,9 +119,9 @@ const LandingPage = () => {
                         <option className="px-3 py-1" value="likesCount-asc">Least Liked</option>
                     </select>
                     <form onSubmit={handleSearch}>
-                        <div className="searchbar">
-                            <input ref={searchValue} type="text" placeholder="Search by Keywords..." />
-                            <button type="submit">Enter</button>
+                        <div className="searchbar ">
+                            <input ref={searchValue} type="text" className="border w-full outline-orange-300 pl-3 pr-20 py-2 rounded-2xl  focus:outline-none focus:ring-2 focus:ring-offset-gray-100 focus:ring-orange-500 shadow-sm" placeholder="Search by Keywords..." />
+                            <button className="absolute right-0 py-2 px-5 bg-orange-500 cursor-pointer text-white rounded-2xl" type="submit">Enter</button>
                         </div>
                     </form>
                 </div>
@@ -138,6 +135,7 @@ const LandingPage = () => {
                 <button className={` rounded-md px-4 py-2 ${currentPage == 1 ? 'bg-slate-200 text-slate-500' : 'bg-slate-300 text-black'}`} onClick={() => setCurrentPage(prev => prev - 1)} disabled={currentPage === 1}>Previous</button>
                 <button className={` rounded-md px-4 py-2 ${isLastPage ? 'bg-slate-200 text-slate-500' : 'bg-slate-300 text-black'}`} onClick={() => setCurrentPage(prev => prev + 1)} disabled={isLastPage}>Next</button>
             </div>
+            {!userState.userId ? <a href="/login" className="bg-blue-600 px-3 py-2 rounded-md shadow-2xl text-white fixed bottom-10 right-10 ">Login</a> : userState.role==='SELLER' ? <a href="/auth/home" className="bg-blue-600 px-3 py-2 rounded-md text-white shadow-2xl fixed bottom-10 right-10 ">Dashboard</a>: <a href="/auth/home" className="bg-blue-600 px-3 py-2 rounded-md text-white shadow-2xl fixed bottom-10 right-10 ">Home</a>}
         </div>
     )
 }
