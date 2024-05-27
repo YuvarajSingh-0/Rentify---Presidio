@@ -40,7 +40,7 @@ const PropertyCard = (props) => {
                 )}
             </div>
             <div className="card-info">
-                {tenant ? <h3 className="badge green-badge">Occupied</h3> : <h3 className="badge red-badge">Vacant</h3>}
+                {/* {tenant ? <h3 className="badge green-badge">Occupied</h3> : <h3 className="badge red-badge">Vacant</h3>} */}
                 <table>
                     <tr>
                         <td>Property</td>

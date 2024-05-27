@@ -216,9 +216,16 @@ export default function Property() {
                     <p className='my-2'><b>Price</b><br />{property.price} INR</p>
                     <p className='my-2'><b>Area</b><br />{property.area} sqft</p>
                     <p className='my-2'><b>Info</b><br />{property.bedrooms} Bedrooms, {property.bathrooms} Bathrooms</p>
+                    <p className='my-2'><b>Nearby Schools</b><br />{property.nearbySchools?.join(', ')}</p>
+                    <p className='my-2'><b>Nearby Metros</b><br />{property.nearbyMetros?.join(', ')}</p>
+                    <p className='my-2'><b>Nearby Hospitals</b><br />{property.nearbyHospitals?.join(', ')}</p>
+
                     <p><b>Benifits</b><br />
                         <ul>
                             {property.amenities?.map((benefit, index) => <li className='flex capitalize gap-2 py-1' key={index}><i className='fi fi-br-check-circle flex items-center flex-wrap text-blue-500'></i>{benefit}</li>)}
+                            {property.schoolDistance < 10 && property.schoolDistance > 0 && <li className='flex capitalize gap-2 py-1'><i className='fi fi-br-check-circle flex items-center flex-wrap text-blue-500'></i>Nearby Schools</li>}
+                            {property.metroDistance < 10 && property.metroDistance > 0 && <li className='flex capitalize gap-2 py-1'><i className='fi fi-br-check-circle flex items-center flex-wrap text-blue-500'></i>Nearby Metros</li>}
+                            {property.hospitalDistance < 15 && property.hospitalDistance > 0 && <li className='flex capitalize gap-2 py-1'><i className='fi fi-br-check-circle flex items-center flex-wrap text-blue-500'></i>Nearby Hospitals</li>}
                         </ul>
                     </p>
                 </div>

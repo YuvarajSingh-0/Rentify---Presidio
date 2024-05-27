@@ -17,7 +17,7 @@ const Navbar = ({ userState }) => {
             <ul>
                 <li>
                     <Link to={'/auth/home'}>
-                        <i title={userState.role === 'SELLER?' ? 'My Properties' : 'Home'} className={userState.role === 'SELLER' ? "fi fi-br-apps" : "fi fi-br-home"}>
+                        <i title={userState.role === 'SELLER' ? 'My Properties' : 'Home'} className={userState.role === 'SELLER' ? "fi fi-br-apps" : "fi fi-br-home"}>
                         </i>
                     </Link>
                 </li>
